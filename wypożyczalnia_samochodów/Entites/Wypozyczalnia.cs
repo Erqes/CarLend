@@ -8,7 +8,6 @@ namespace wypożyczalnia_samochodów.Entites
     public class Wypozyczalnia
     {
         public int Id { get; set; }
-        public int CarCount { get; set; }
         public virtual List<Car> Cars { get; set; }
     }
 }

@@ -9,8 +9,8 @@ using wypożyczalnia_samochodów.Entites;
 namespace wypożyczalnia_samochodów.Migrations
 {
     [DbContext(typeof(WypozyczalniaDbContext))]
-    [Migration("20221109213100_Init")]
-    partial class Init
+    [Migration("20221111214944_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,9 +55,6 @@ namespace wypożyczalnia_samochodów.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<int>("CarCount")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

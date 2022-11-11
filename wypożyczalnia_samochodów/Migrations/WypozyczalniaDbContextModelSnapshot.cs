@@ -54,9 +54,6 @@ namespace wypożyczalnia_samochodów.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CarCount")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Wypozyczalnie");

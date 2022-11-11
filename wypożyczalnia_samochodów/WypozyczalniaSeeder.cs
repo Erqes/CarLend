@@ -15,9 +15,9 @@ namespace wypożyczalnia_samochodów
         }
         public void Seed()
         {
-            if(_dbContext.Database.CanConnect())
+            if (_dbContext.Database.CanConnect())
             {
-                if(!_dbContext.Wypozyczalnie.Any())
+                if (!_dbContext.Wypozyczalnie.Any())
                 {
                     var wypozyczalnie = GetWypozyczalnie();
                     _dbContext.Wypozyczalnie.AddRange(wypozyczalnie);
@@ -31,7 +31,6 @@ namespace wypożyczalnia_samochodów
             {
                 new Wypozyczalnia()
                 {
-                    CarCount=4,
                     Cars=new List<Car>()
                     {
                         new Car()
@@ -69,7 +68,7 @@ namespace wypożyczalnia_samochodów
             new Wypozyczalnia()
 
         };
-        return wypozyczalnie;
+            return wypozyczalnie;
         }
     }
 }

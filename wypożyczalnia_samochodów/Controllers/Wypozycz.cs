@@ -31,7 +31,7 @@ namespace wypożyczalnia_samochodów.Controllers
         //    });
         //    return Ok(cars);
         //}
-       
+
         //public IEnumerable<string> Get()
         //{
         //    return new string[] { "value1", "value2" };
@@ -43,29 +43,28 @@ namespace wypożyczalnia_samochodów.Controllers
         //}
 
         [HttpPost("wylicz")]
-        public string Wylicz([FromQuery] string carClass, [FromQuery] float km, 
-            [FromQuery] DateTime from, [FromQuery] DateTime to,[FromQuery] DateTime driveLicense)
+        public string Wylicz([FromBody] LendParams lendParams)
         {
-            var car= _dbContext.Cars.FirstOrDefault(c=>c.Class==carClass);
+            var car = _dbContext.Cars.FirstOrDefault(c => c.Class == lendParams.carClass.ToString());
             var CarsCount = _dbContext.Cars.Count();
-            TimeSpan howLong = DateTime.Now - driveLicense;
-            float fhowLong=(float)howLong.TotalDays;
-            TimeSpan days=to -from;
-            double x = days.TotalDays;
-            float fdays = (float)x;//ilosc dni w int 
-            float result = (car.Combustion * km/100 * fuelPrice + lendPrice*fdays);
-            switch (carClass)
+            var howLong = DateTime.Now - lendParams.driveLicense;
+            var fhowLong = (float)howLong.TotalDays;
+            var days = lendParams.to - lendParams.from;
+            var x = days.TotalDays;
+            var fdays = (float)x;//ilosc dni w int 
+            var result = (car.Combustion * lendParams.km / 100 * fuelPrice + lendPrice * fdays);
+            switch ((int)lendParams.carClass)
             {
-                case "Basic":
+                case 0:
                     result = result;
                     break;
-                case "Standard":
+                case 10:
                     result = result * 1.3f;
                     break;
-                case "Medium":
+                case 20:
                     result = result * 1.6f;
                     break;
-                case "Premium":
+                case 30:
                     result = result * 2;
                     break;
             }
@@ -81,14 +80,14 @@ namespace wypożyczalnia_samochodów.Controllers
             else
                 resultCount = 0;
             //jeśli prawo jazdy mniej niż 3 lata i klasa Premium
-            if ((3 * 365 > fhowLong) && carClass == "Premium")
+            if ((3 * 365 > fhowLong) && lendParams.carClass.ToString() == "Premium")
                 return "Nie można wypożyczyć samochodu";
 
-            result = result+ resultCount + resultYears;
+            result = result + resultCount + resultYears;
 
             return $"Cena netto: {result}, Cena brutto: {result + result * 0.23}, Cena Całkowita= (Cena Wypożyczenia x ilość dni + koszt paliwa) x klasa samochodu" +
             $" + Koszt(jesli prawo jazdy posiadane jest mniej niż 5 lat) + Koszt(jeśli aut jest dostępnych mniej niż 3)=" +
-            $"({100}x{fdays}+{car.Combustion * km / 100 * fuelPrice}) x {carClass} + {resultYears} + {resultCount}";
+            $"({100}x{fdays}+{car.Combustion * lendParams.km / 100 * fuelPrice}) x {lendParams.carClass} + {resultYears} + {resultCount}";
 
         }
     }
