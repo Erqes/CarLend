@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8COqPnWATUNsQ880nWeihfg8niUQBzXBv4G6hCoAOc7E9+UOzq4ZXr++7VplcQgEzgCM0Eno2rtlQDrvH6jtUA==",
+  "dgSpecHash": "eW/cC0vBgzPpKck6Lzw371Z/OrHaXl8U+f9scnk3lzaN1mxYxTU4y2ZLCh6fWEO4ORbLdLo9U1N0Da/P6zJQRw==",
   "success": true,
-  "projectFilePath": "D:\\C#\\wypożyczalnia_samochodów\\wypożyczalnia_samochodów.csproj",
+  "projectFilePath": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\wypożyczalnia_samochodów.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shaza\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\shaza\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
