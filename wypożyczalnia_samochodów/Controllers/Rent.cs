@@ -13,15 +13,12 @@ namespace CarRent.Controllers
 
     [ApiController]
     [Route("[controller]")]
-    public class RentController : ControllerBase
+    public class RentController : ControllerBase, ICarsRepository
     {
         float fuelPrice = 8;
         float lendPrice = 100;
-        private readonly CarRentDbContext _dbContext;
-        public RentController(CarRentDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+
+
         //[HttpGet]
         //public ActionResult<IEnumerable<Car>> GetAll()
         //{
@@ -43,12 +40,21 @@ namespace CarRent.Controllers
         //{
         //    return $"Hello {name}";
         //}
-
+        public IEnumerable<Car> GetCars()
+        {
+            CarRentDbContext _dbContext = new CarRentDbContext();
+            return _dbContext.Cars.FirstOrDefault(c => c.Class == lendParams.carClass.ToString());
+        }
+        public IEnumerable<Car> CarCount()
+        {
+            CarRentDbContext _dbContext = new CarRentDbContext();
+            return _dbContext.Cars.Count();
+        }
         [HttpPost("count")]
         public string Count([FromBody] LendParams lendParams)
         {
-            var car = _dbContext.Cars.FirstOrDefault(c => c.Class == lendParams.carClass.ToString());
-            var CarsCount = _dbContext.Cars.Count();
+            var car = GetCars();
+            var CarsCount = CarCount();
             var howLong = DateTime.Now - lendParams.driveLicense;
             var fhowLong = (float)howLong.TotalDays;
             var days = lendParams.to - lendParams.from;
@@ -59,9 +65,9 @@ namespace CarRent.Controllers
             var res = (int)lendParams.carClass switch
             {
                 0 => result = result,
-                10=>result=result*1.3f,
-                20=>result=result*1.6f,
-                30=>result=result*2
+                10 => result = result * 1.3f,
+                20 => result = result * 1.6f,
+                30 => result = result * 2
 
             };
             float resultYears, resultCount;
