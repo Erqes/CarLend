@@ -8,9 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using wypożyczalnia_samochodów.Entites;
+using CarRent.Entites;
 
-namespace wypożyczalnia_samochodów
+namespace CarRent
 {
     public class Startup
     {
@@ -25,12 +25,12 @@ namespace wypożyczalnia_samochodów
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<WypozyczalniaDbContext>();
-            services.AddScoped<WypozyczalniaSeeder>();
+            services.AddDbContext<CarRentDbContext>();
+            services.AddScoped<CarRentSeeder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WypozyczalniaSeeder seeder)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, CarRentSeeder seeder)
         {
             seeder.Seed();
             if (env.IsDevelopment())

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace wypożyczalnia_samochodów.Entites
+namespace CarRent.Entites
 {
     public class Car
     {
@@ -12,8 +12,8 @@ namespace wypożyczalnia_samochodów.Entites
         public string Name { get; set; }
         public float Combustion { get; set; }
         public string Localization { get; set; }
-        public int WypozyczalniaId { get; set; }
-        public virtual Wypozyczalnia Wypozyczalnia { get; set; }
+        public int CarRentId { get; set; }
+        public virtual CarRental CarRent { get; set; }
 
     }
 }
