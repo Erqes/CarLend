@@ -39,6 +39,8 @@ namespace CarRent
                             Name="BWM",
                             Localization="Warszawa",
                             Combustion=9f,
+                            From=new DateTime(2022,6,11),
+                            To=new DateTime(2022, 6, 19)
                         },
                          new Car()
                          {
@@ -61,7 +63,25 @@ namespace CarRent
                              Localization="Warszawa",
                              Combustion=5f,
                          },
+                         new Car()
+                         {
+                             Class="Basic",
+                             Name="Alfa",
+                             Localization="Warszawa",
+                             Combustion=5f,
+                         }
 
+                    },
+                    Employees=new List<Employee>()
+                    {
+                        new Employee()
+                        {
+                            Name="Bogdan",
+                            LastName="Brzęczyszczykiewicz",
+                            Email="os@gmail.com",
+                            Phone="888777999",
+
+                        },
                     },
 
                 },

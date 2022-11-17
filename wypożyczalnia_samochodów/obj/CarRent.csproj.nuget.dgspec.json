@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {}
+    "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {
+    "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
+        "projectUniqueName": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
         "projectName": "CarRent",
-        "projectPath": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
-        "packagesPath": "C:\\Users\\shaza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\obj\\",
+        "projectPath": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
+        "packagesPath": "C:\\Users\\pavel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\shaza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,17 +43,54 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

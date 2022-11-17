@@ -7,17 +7,25 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using CarRent.Entites;
+using CarRent.Models;
+using MimeKit;
+using MimeKit.Text;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using CarRent.Services;
 
 namespace CarRent.Controllers
 {
 
     [ApiController]
     [Route("[controller]")]
-    public class RentController : ControllerBase, ICarsRepository
+    public class RentController : ControllerBase
     {
-        float fuelPrice = 8;
-        float lendPrice = 100;
-
+        private readonly ICarRentService _carRentService;
+        public RentController(ICarRentService carRentService)
+        {
+            _carRentService = carRentService;
+        }
 
         //[HttpGet]
         //public ActionResult<IEnumerable<Car>> GetAll()
@@ -40,57 +48,20 @@ namespace CarRent.Controllers
         //{
         //    return $"Hello {name}";
         //}
-        public IEnumerable<Car> GetCars()
-        {
-            CarRentDbContext _dbContext = new CarRentDbContext();
-            return _dbContext.Cars.FirstOrDefault(c => c.Class == lendParams.carClass.ToString());
-        }
-        public IEnumerable<Car> CarCount()
-        {
-            CarRentDbContext _dbContext = new CarRentDbContext();
-            return _dbContext.Cars.Count();
-        }
         [HttpPost("count")]
         public string Count([FromBody] LendParams lendParams)
         {
-            var car = GetCars();
-            var CarsCount = CarCount();
-            var howLong = DateTime.Now - lendParams.driveLicense;
-            var fhowLong = (float)howLong.TotalDays;
-            var days = lendParams.to - lendParams.from;
-            var x = days.TotalDays;
-            var fdays = (float)x;//ilosc dni w int 
-            var result = (car.Combustion * lendParams.km / 100 * fuelPrice + lendPrice * fdays);
-
-            var res = (int)lendParams.carClass switch
-            {
-                0 => result = result,
-                10 => result = result * 1.3f,
-                20 => result = result * 1.6f,
-                30 => result = result * 2
-
-            };
-            float resultYears, resultCount;
-            //jeśli prawo jazdy mniej niż 5 lat 
-            if (5 * 365 > fhowLong)
-                resultYears = result + result * 0.2f;
-            else
-                resultYears = 0;
-            //jesli aut jest mniej niż 3 
-            if (CarsCount < 3)
-                resultCount = result + result * 0.15f;
-            else
-                resultCount = 0;
-            //jeśli prawo jazdy mniej niż 3 lata i klasa Premium
-            if ((3 * 365 > fhowLong) && lendParams.carClass.ToString() == "Premium")
-                return "Nie można wypożyczyć samochodu";
-
-            result = result + resultCount + resultYears;
-
-            return $"Cena netto: {result}, Cena brutto: {result + result * 0.23}, Cena Całkowita= (Cena Wypożyczenia x ilość dni + koszt paliwa) x klasa samochodu" +
-            $" + Koszt(jesli prawo jazdy posiadane jest mniej niż 5 lat) + Koszt(jeśli aut jest dostępnych mniej niż 3)=" +
-            $"({100}x{fdays}+{car.Combustion * lendParams.km / 100 * fuelPrice}) x {lendParams.carClass} + {resultYears} + {resultCount}";
-
+            var count = _carRentService.CountBy(lendParams);
+            return count;
         }
+        [HttpGet]
+        public ActionResult<IEnumerable<CarRentDto>> GetAll()
+        {
+            var cars = _carRentService.GetAll();
+            if (cars == null)
+                return NotFound();
+            return Ok(cars);
+        }
+        
     }
 }

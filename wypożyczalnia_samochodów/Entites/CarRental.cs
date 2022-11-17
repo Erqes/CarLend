@@ -9,5 +9,7 @@ namespace CarRent.Entites
     {
         public int Id { get; set; }
         public virtual List<Car> Cars { get; set; }
+        public virtual List<Customer> Customers { get; set; }
+        public virtual List<Employee> Employees { get; set; }
     }
 }

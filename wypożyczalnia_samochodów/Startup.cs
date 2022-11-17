@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CarRent.Entites;
+using CarRent.Services;
 
 namespace CarRent
 {
@@ -27,6 +28,9 @@ namespace CarRent
             services.AddControllers();
             services.AddDbContext<CarRentDbContext>();
             services.AddScoped<CarRentSeeder>();
+            services.AddScoped<ICarRentService, CarRentService>();
+            services.AddAutoMapper(this.GetType().Assembly);
+            services.AddScoped<IReservationService,ReservationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
