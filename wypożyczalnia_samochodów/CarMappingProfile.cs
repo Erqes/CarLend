@@ -9,7 +9,9 @@ namespace CarRent
         public CarMappingProfile()
         {
             CreateMap<CarRental, CarRentDto>();
-            CreateMap<Car, CarDto>();        
+            CreateMap<Car, CarDto>();
+            CreateMap<ReservationParams, Customer>();
+            CreateMap<ReservationParams, Rent>();
         }
     }
 }

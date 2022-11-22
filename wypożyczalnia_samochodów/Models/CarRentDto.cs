@@ -4,7 +4,7 @@ namespace CarRent.Models
 {
     public class CarRentDto
     {
-        public int Id { get; set; }
-        public List<CarDto> Cars { get; set; }
+        public int id { get; set; }
+        public List<CarDto> cars { get; set; }
     }
 }

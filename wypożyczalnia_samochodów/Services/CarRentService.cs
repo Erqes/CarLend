@@ -46,7 +46,7 @@ namespace CarRent.Services
             var days = lendParams.to - lendParams.from;
             var x = days.TotalDays;
             var fdays = (float)x;//ilosc dni w int 
-            var result = car.Combustion * lendParams.km / 100 * fuelPrice + lendPrice * fdays;
+            var result = car.combustion * lendParams.km / 100 * fuelPrice + lendPrice * fdays;
 
             var res = (int)lendParams.carClass switch
             {
@@ -75,7 +75,7 @@ namespace CarRent.Services
 
             return $"Cena netto: {result}, Cena brutto: {result + result * 0.23}, Cena Całkowita= (Cena Wypożyczenia x ilość dni + koszt paliwa) x klasa samochodu" +
             $" + Koszt(jesli prawo jazdy posiadane jest mniej niż 5 lat) + Koszt(jeśli aut jest dostępnych mniej niż 3)=" +
-            $"({100}x{fdays}+{car.Combustion * lendParams.km / 100 * fuelPrice}) x {lendParams.carClass} + {resultYears} + {resultCount}";
+            $"({100}x{fdays}+{car.combustion * lendParams.km / 100 * fuelPrice}) x {lendParams.carClass} + {resultYears} + {resultCount}";
         }
         public void reservation(ReservationParams reservationParams)
         {
@@ -83,7 +83,7 @@ namespace CarRent.Services
         public IEnumerable<CarRentDto> GetAll()
         {
             var cars = _dbContext.CarRents
-                .Include(r => r.Cars)
+                .Include(r => r.cars)
                 .ToList();
             var carsDtos = _mapper.Map<List<CarRentDto>>(cars);
             return carsDtos;

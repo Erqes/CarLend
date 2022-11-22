@@ -31,55 +31,55 @@ namespace CarRent
             {
                 new CarRental()
                 {
-                    Cars=new List<Car>()
+                    cars=new List<Car>()
                     {
                         new Car()
                         {
                             Class="Premium",
-                            Name="BWM",
-                            Localization="Warszawa",
-                            Combustion=9f,
-                            From=new DateTime(2022,6,11),
-                            To=new DateTime(2022, 6, 19)
+                            name="BWM",
+                            localization="Warszawa",
+                            combustion=9f,
+                            //from=new DateTime(2022,6,11),
+                            //to=new DateTime(2022, 6, 19)
                         },
                          new Car()
                          {
                              Class="Medium",
-                             Name="Skoda",
-                             Localization="Kraków",
-                             Combustion=7f,
+                             name="Skoda",
+                             localization="Kraków",
+                             combustion=7f,
                          },
                          new Car()
                          {
                              Class="Standard",
-                             Name="Opel",
-                             Localization="Nowy Sącz",
-                             Combustion=6f,
+                             name="Opel",
+                             localization="Nowy Sącz",
+                             combustion=6f,
                          },
                          new Car()
                          {
                              Class="Basic",
-                             Name="Fiat",
-                             Localization="Warszawa",
-                             Combustion=5f,
+                             name="Fiat",
+                             localization="Warszawa",
+                             combustion=5f,
                          },
                          new Car()
                          {
                              Class="Basic",
-                             Name="Alfa",
-                             Localization="Warszawa",
-                             Combustion=5f,
+                             name="Alfa",
+                             localization="Warszawa",
+                             combustion=5f,
                          }
 
                     },
-                    Employees=new List<Employee>()
+                    employees=new List<Employee>()
                     {
                         new Employee()
                         {
-                            Name="Bogdan",
-                            LastName="Brzęczyszczykiewicz",
-                            Email="os@gmail.com",
-                            Phone="888777999",
+                            name="Bogdan",
+                            lastName="Brzęczyszczykiewicz",
+                            email="os@gmail.com",
+                            phone="888777999",
 
                         },
                     },

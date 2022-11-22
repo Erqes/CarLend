@@ -30,11 +30,11 @@ namespace CarRent.Controllers
         //[HttpGet]
         //public ActionResult<IEnumerable<Car>> GetAll()
         //{
-        //    var cars = _dbContext.Cars.ToList();
+        //    var cars = _dbContext.cars.ToList();
         //    var carsDtos = cars.Select(c => new Car()
         //    {
         //        Class = c.Class,
-        //        Combustion = c.Combustion,
+        //        combustion = c.combustion,
         //    });
         //    return Ok(cars);
         //}

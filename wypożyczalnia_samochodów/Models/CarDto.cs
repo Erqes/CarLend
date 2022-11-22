@@ -4,13 +4,13 @@ namespace CarRent.Models
 {
     public class CarDto
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Class { get; set; }
-        public string Name { get; set; }
-        public float Combustion { get; set; }
-        public string Localization { get; set; }
-        public int CarRentId { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
+        public string name { get; set; }
+        public float combustion { get; set; }
+        public string localization { get; set; }
+        public int carRentId { get; set; }
+        public DateTime from { get; set; }
+        public DateTime to { get; set; }
     }
 }

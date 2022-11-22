@@ -6,7 +6,7 @@ namespace CarRent
 {
     public class ReservationParams
     {
-        public List<int> id { get; set; }
+        public List<int> carsId { get; set; }
         public string name { get; set; }
         public string lastName { get; set; }
         public string address { get; set; }

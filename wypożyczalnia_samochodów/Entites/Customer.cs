@@ -4,17 +4,17 @@ namespace CarRent.Entites
 {
     public class Customer
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string PostalCode { get; set; }
-        public virtual List<Car> Cars { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual CarRental CarRental { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string lastName { get; set; }
+        public string email { get; set; }
+        public string phone { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string postalCode { get; set; }
+        public List<Car> cars { get; set; }
+        public Employee employee { get; set; }
+        public int employeeId { get; set; }
 
     }
 }
