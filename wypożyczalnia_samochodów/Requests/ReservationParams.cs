@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CarRent
+namespace CarRent.Requests
 {
     public class ReservationParams
     {

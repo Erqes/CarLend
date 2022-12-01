@@ -9,8 +9,9 @@ namespace CarRent.Models
         public string name { get; set; }
         public float combustion { get; set; }
         public string localization { get; set; }
+        public int horsePower { get; set; }
+        public string color { get; set; }
+        public float price { get; set; }
         public int carRentId { get; set; }
-        public DateTime from { get; set; }
-        public DateTime to { get; set; }
     }
 }

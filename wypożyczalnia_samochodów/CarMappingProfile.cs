@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarRent.Entites;
 using CarRent.Models;
+using CarRent.Requests;
 
 namespace CarRent
 {

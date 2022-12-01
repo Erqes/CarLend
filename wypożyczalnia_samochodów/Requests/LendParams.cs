@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CarRent.Requests.Enums;
 
-namespace CarRent
+namespace CarRent.Requests
 {
     public class LendParams
     {

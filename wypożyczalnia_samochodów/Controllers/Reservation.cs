@@ -4,11 +4,12 @@ using MimeKit.Text;
 using MimeKit;
 using MailKit.Net.Smtp;
 using CarRent.Services;
+using CarRent.Requests;
 
 namespace CarRent.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("reservations")]
     public class ReservationController : ControllerBase
     {
         private readonly IReservationService _reservationService;
@@ -17,19 +18,16 @@ namespace CarRent.Controllers
             _reservationService = reservationService;
         }
         [HttpPost("reserve")]
-        public ActionResult Reservation([FromBody] ReservationParams reservationParams)
+        public string Reservation([FromBody] ReservationParams reservationParams)
         {
             var result = _reservationService.Reservation(reservationParams);
-            if (result == -1)
-                return Ok(reservationParams);
-            return BadRequest($"Nie można wypożyczyć auta o podanym id={result} w tym czasie");
-
+            return result;
         }
-        [HttpDelete("{id}")]
+        [HttpPut("{Id}")]
         public ActionResult CarReturn([FromRoute] int id)
         {
-            var isReturn = _reservationService.CarReturn(id);
-            if (isReturn)
+            var returnedSuccessfully = _reservationService.CarReturn(id);
+            if (returnedSuccessfully)
                 return NoContent();
             return NotFound();
         }

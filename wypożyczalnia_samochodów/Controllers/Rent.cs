@@ -13,12 +13,13 @@ using MimeKit.Text;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using CarRent.Services;
+using CarRent.Requests;
 
 namespace CarRent.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("rents")]
     public class RentController : ControllerBase
     {
         private readonly ICarRentService _carRentService;
@@ -30,13 +31,13 @@ namespace CarRent.Controllers
         //[HttpGet]
         //public ActionResult<IEnumerable<Car>> GetAll()
         //{
-        //    var cars = _dbContext.cars.ToList();
-        //    var carsDtos = cars.Select(c => new Car()
+        //    var Cars = _dbContext.Cars.ToList();
+        //    var carsDtos = Cars.Select(c => new Car()
         //    {
         //        Class = c.Class,
-        //        combustion = c.combustion,
+        //        Combustion = c.Combustion,
         //    });
-        //    return Ok(cars);
+        //    return Ok(Cars);
         //}
 
         //public IEnumerable<string> Get()
@@ -44,9 +45,9 @@ namespace CarRent.Controllers
         //    return new string[] { "value1", "value2" };
         //}
         //[HttpPost("przywitaj")]
-        //public string Hello([FromBody] string name)
+        //public string Hello([FromBody] string Name)
         //{
-        //    return $"Hello {name}";
+        //    return $"Hello {Name}";
         //}
         [HttpPost("count")]
         public string Count([FromBody] LendParams lendParams)
@@ -60,6 +61,15 @@ namespace CarRent.Controllers
             var cars = _carRentService.GetAll();
             if (cars == null)
                 return NotFound();
+            return Ok(cars);
+        }
+        [HttpGet("byparams")]
+        public ActionResult<IEnumerable<CarRentDto>> GetByParams([FromBody] CarParams carParams)
+        {
+            // filtruj po:
+            // do wyboru kolor, spalanie od-do, cena od-do, moc od-do, nazwa
+            //sortuj po cenie od nw, od nm
+            var cars=_carRentService.GetByParams(carParams);
             return Ok(cars);
         }
         

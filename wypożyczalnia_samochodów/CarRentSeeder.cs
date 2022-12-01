@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CarRent.DbContexts;
 using CarRent.Entites;
 
 namespace CarRent
@@ -31,55 +32,55 @@ namespace CarRent
             {
                 new CarRental()
                 {
-                    cars=new List<Car>()
+                    Cars=new List<Car>()
                     {
                         new Car()
                         {
                             Class="Premium",
-                            name="BWM",
-                            localization="Warszawa",
-                            combustion=9f,
-                            //from=new DateTime(2022,6,11),
-                            //to=new DateTime(2022, 6, 19)
+                            Name="BWM",
+                            Localization="Warszawa",
+                            Combustion=9f,
+                            //From=new DateTime(2022,6,11),
+                            //To=new DateTime(2022, 6, 19)
                         },
                          new Car()
                          {
                              Class="Medium",
-                             name="Skoda",
-                             localization="Kraków",
-                             combustion=7f,
+                             Name="Skoda",
+                             Localization="Kraków",
+                             Combustion=7f,
                          },
                          new Car()
                          {
                              Class="Standard",
-                             name="Opel",
-                             localization="Nowy Sącz",
-                             combustion=6f,
+                             Name="Opel",
+                             Localization="Nowy Sącz",
+                             Combustion=6f,
                          },
                          new Car()
                          {
                              Class="Basic",
-                             name="Fiat",
-                             localization="Warszawa",
-                             combustion=5f,
+                             Name="Fiat",
+                             Localization="Warszawa",
+                             Combustion=5f,
                          },
                          new Car()
                          {
                              Class="Basic",
-                             name="Alfa",
-                             localization="Warszawa",
-                             combustion=5f,
+                             Name="Alfa",
+                             Localization="Warszawa",
+                             Combustion=5f,
                          }
 
                     },
-                    employees=new List<Employee>()
+                    Employees=new List<Employee>()
                     {
                         new Employee()
                         {
-                            name="Bogdan",
-                            lastName="Brzęczyszczykiewicz",
-                            email="os@gmail.com",
-                            phone="888777999",
+                            Name="Bogdan",
+                            LastName="Brzęczyszczykiewicz",
+                            Email="os@gmail.com",
+                            Phone="888777999",
 
                         },
                     },

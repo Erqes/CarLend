@@ -43,7 +43,7 @@ namespace CarRent.Migrations
                         name: "FK_Cars_CarRents_CarRentalid",
                         column: x => x.CarRentalid,
                         principalTable: "CarRents",
-                        principalColumn: "id");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -65,7 +65,7 @@ namespace CarRent.Migrations
                         name: "FK_Employees_CarRents_CarRentalid",
                         column: x => x.CarRentalid,
                         principalTable: "CarRents",
-                        principalColumn: "id");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -90,7 +90,7 @@ namespace CarRent.Migrations
                         name: "FK_Customers_Employees_employeeId",
                         column: x => x.employeeId,
                         principalTable: "Employees",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -111,13 +111,13 @@ namespace CarRent.Migrations
                         name: "FK_Rents_Cars_carId",
                         column: x => x.carId,
                         principalTable: "Cars",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Rents_Customers_customerId",
                         column: x => x.customerId,
                         principalTable: "Customers",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -129,7 +129,7 @@ namespace CarRent.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_employeeId",
                 table: "Customers",
-                column: "employeeId");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_CarRentalid",
@@ -139,7 +139,7 @@ namespace CarRent.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Rents_customerId",
                 table: "Rents",
-                column: "customerId");
+                column: "CustomerId");
         }
 
         /// <inheritdoc />
