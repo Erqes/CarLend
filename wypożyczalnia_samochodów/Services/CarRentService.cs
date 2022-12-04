@@ -10,12 +10,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CarRent.Services
 {
     public interface ICarRentService
     {
-        string CountBy(LendParams lendParams);
+        Task<string> CountBy(LendParams lendParams);
         IEnumerable<CarRentDto> GetAll();
         IEnumerable<CarDto> GetByParams(CarParams carParams);
     }
@@ -30,22 +31,22 @@ namespace CarRent.Services
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public Car GetType(CarType carClass)
+        public async Task<Car> GetType(CarType carClass)
         {
-            return _dbContext.Cars.FirstOrDefault(c => c.Class == carClass.ToString());
+            return await Task.Run(()=>_dbContext.Cars.FirstOrDefault(c => c.Class == carClass.ToString()));
         }
-        public int GetCount()
+        public async Task<int> GetCount()
         {
 
-            return _dbContext.Cars.Count();
+            return await Task.Run(()=>_dbContext.Cars.Count());
         }
-        public string CountBy(LendParams lendParams)
+        public async Task<string> CountBy(LendParams lendParams)
         {
             var fuelPrice = 8;
             var lendPrice = 100;
-            var car = GetType(lendParams.carClass);
+            var car =await GetType(lendParams.carClass);
             if (car is null) return null;
-            var CarsCount = GetCount();
+            var CarsCount =await GetCount();
             var howLong = DateTime.Now - lendParams.driveLicense;
             var floatHowLong = (float)howLong.TotalDays;
             var days = lendParams.to - lendParams.from;
@@ -82,9 +83,6 @@ namespace CarRent.Services
             $" + Koszt(jesli prawo jazdy posiadane jest mniej niż 5 lat) + Koszt(jeśli aut jest dostępnych mniej niż 3)=" +
             $"({100}howManyDays{floatDays}+{car.Combustion * lendParams.km / 100 * fuelPrice}) howManyDays {lendParams.carClass} + {resultYears} + {resultCount}";
         }
-        public void reservation(ReservationParams reservationParams)
-        {
-        }
         public IEnumerable<CarRentDto> GetAll()
         {
             var cars = _dbContext.CarRents
@@ -93,19 +91,7 @@ namespace CarRent.Services
             var carsDtos = _mapper.Map<List<CarRentDto>>(cars);
             return carsDtos;
         }
-        public CarDto MapCars(Car cars)
-        {
-            var carsDto = new CarDto();
-            carsDto.id = cars.Id;
-            carsDto.name = cars.Name;
-            carsDto.price = cars.Price;
-            carsDto.Class = cars.Class;
-            carsDto.combustion = cars.Combustion;
-            carsDto.localization = cars.Localization;
-            carsDto.color = cars.Color;
-            carsDto.horsePower = cars.HorsePower;
-            return carsDto;
-        }
+       
         public IEnumerable<CarDto> GetByParams(CarParams carParams)
         {
             var cars = _dbContext.Cars.Where(c => c.Name == carParams.name)

@@ -50,9 +50,9 @@ namespace CarRent.Controllers
         //    return $"Hello {Name}";
         //}
         [HttpPost("count")]
-        public string Count([FromBody] LendParams lendParams)
+        public async Task<string> Count([FromBody] LendParams lendParams)
         {
-            var count = _carRentService.CountBy(lendParams);
+            var count =await Task.Run(()=> _carRentService.CountBy(lendParams));
             return count;
         }
         [HttpGet]

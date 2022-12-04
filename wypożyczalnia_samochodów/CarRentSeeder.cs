@@ -40,8 +40,10 @@ namespace CarRent
                             Name="BWM",
                             Localization="Warszawa",
                             Combustion=9f,
-                            //From=new DateTime(2022,6,11),
-                            //To=new DateTime(2022, 6, 19)
+                            HorsePower=300,
+                            Price=80000.50f,
+                            Color="Gold",
+
                         },
                          new Car()
                          {
@@ -49,6 +51,9 @@ namespace CarRent
                              Name="Skoda",
                              Localization="Kraków",
                              Combustion=7f,
+                             HorsePower=200,
+                             Price=50000.50f,
+                             Color="Green",
                          },
                          new Car()
                          {
@@ -56,6 +61,9 @@ namespace CarRent
                              Name="Opel",
                              Localization="Nowy Sącz",
                              Combustion=6f,
+                             HorsePower=100,
+                             Price=30000.50f,
+                             Color="Silver",
                          },
                          new Car()
                          {
@@ -63,6 +71,9 @@ namespace CarRent
                              Name="Fiat",
                              Localization="Warszawa",
                              Combustion=5f,
+                             HorsePower=80,
+                             Price=10000.50f,
+                             Color="Red",
                          },
                          new Car()
                          {
@@ -70,6 +81,9 @@ namespace CarRent
                              Name="Alfa",
                              Localization="Warszawa",
                              Combustion=5f,
+                             HorsePower=50,
+                             Price=5000.50f,
+                             Color="Red",
                          }
 
                     },

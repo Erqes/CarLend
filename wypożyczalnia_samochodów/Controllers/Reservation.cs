@@ -5,6 +5,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using CarRent.Services;
 using CarRent.Requests;
+using System.Threading.Tasks;
 
 namespace CarRent.Controllers
 {
@@ -18,9 +19,9 @@ namespace CarRent.Controllers
             _reservationService = reservationService;
         }
         [HttpPost("reserve")]
-        public string Reservation([FromBody] ReservationParams reservationParams)
+        public async Task<string> Reservation([FromBody] ReservationParams reservationParams)
         {
-            var result = _reservationService.Reservation(reservationParams);
+            var result =await Task.Run(()=>_reservationService.Reservation(reservationParams));
             return result;
         }
         [HttpPut("{Id}")]

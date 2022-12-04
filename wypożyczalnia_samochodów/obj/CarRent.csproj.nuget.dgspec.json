@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {}
+    "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {
+    "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
+        "projectUniqueName": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
         "projectName": "CarRent",
-        "projectPath": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
-        "packagesPath": "C:\\Users\\pavel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\obj\\",
+        "projectPath": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
+        "packagesPath": "C:\\Users\\shaza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\shaza\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,6 +65,10 @@
             "MimeKit": {
               "target": "Package",
               "version": "[3.4.2, )"
+            },
+            "System.Linq.Async": {
+              "target": "Package",
+              "version": "[6.0.1, )"
             }
           },
           "imports": [
