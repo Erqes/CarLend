@@ -56,7 +56,7 @@ namespace CarRent.DbContexts
             //});
             //modelBuilder.Entity<CarRental>(eb =>
             //{
-            //    eb.HasMany(cr => cr.Cars).WithOne(c => c.carRent).HasForeignKey(c => c.carRentId);
+            //    eb.HasMany(cr => cr.Cars).WithOne(c => c.carRent).HasForeignKey(c => c.CarRentId);
             //    eb.HasMany(cr => cr.Employees).WithOne(e => e.carRental).HasForeignKey(e => e.carRentalId);
 
             //});

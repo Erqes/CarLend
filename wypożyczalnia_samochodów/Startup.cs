@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CarRent.Services;
 using CarRent.DbContexts;
+using CarRent.Middleware;
+using CarRent.Seeders;
 
 namespace CarRent
 {
@@ -29,8 +31,8 @@ namespace CarRent
             services.AddDbContext<CarRentDbContext>();
             services.AddScoped<CarRentSeeder>();
             services.AddScoped<ICarRentService, CarRentService>();
-            services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<IReservationService,ReservationService>();
+            services.AddScoped<ErrorHandlingMiddleware>();
         }
 
         // This method gets called by the runtime. Use this method To configure the HTTP request pipeline.
@@ -47,7 +49,7 @@ namespace CarRent
                 // The default HSTS value is 30 days. You may want To change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

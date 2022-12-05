@@ -19,7 +19,7 @@ namespace CarRent.Entites
         public bool IsCar { get; set; }
         public List<Customer> Customers { get; set; }
         //public virtual CarRental carRent { get; set; }
-        //public int carRentId { get; set; }
+        //public int CarRentId { get; set; }
 
     }
 }

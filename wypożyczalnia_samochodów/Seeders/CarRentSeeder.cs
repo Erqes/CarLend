@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using CarRent.DbContexts;
 using CarRent.Entites;
 
-namespace CarRent
+namespace CarRent.Seeders
 {
     public class CarRentSeeder
     {

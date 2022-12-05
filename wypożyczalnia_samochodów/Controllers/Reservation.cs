@@ -21,13 +21,13 @@ namespace CarRent.Controllers
         [HttpPost("reserve")]
         public async Task<string> Reservation([FromBody] ReservationParams reservationParams)
         {
-            var result =await Task.Run(()=>_reservationService.Reservation(reservationParams));
+            var result =await _reservationService.Reservation(reservationParams);
             return result;
         }
         [HttpPut("{Id}")]
-        public ActionResult CarReturn([FromRoute] int id)
+        public async Task<ActionResult> CarReturn([FromRoute] int id)
         {
-            var returnedSuccessfully = _reservationService.CarReturn(id);
+            var returnedSuccessfully = await _reservationService.CarReturn(id);
             if (returnedSuccessfully)
                 return NoContent();
             return NotFound();

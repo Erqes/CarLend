@@ -6,14 +6,14 @@ namespace CarRent.Requests
 {
     public class ReservationParams
     {
-        public List<int> carsId { get; set; }
-        public string name { get; set; }
-        public string lastName { get; set; }
-        public string address { get; set; }
-        public string postalCode { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
-        public DateTime from { get; set; }
-        public DateTime to { get; set; }
+        public List<int> CarsId { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
+        public string PostalCode { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public DateTime From { get; set; }
+        public DateTime To { get; set; }
     }
 }

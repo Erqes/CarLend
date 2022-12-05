@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {}
+    "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {
+    "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
+        "projectUniqueName": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
         "projectName": "CarRent",
-        "projectPath": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
-        "packagesPath": "C:\\Users\\shaza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shaza\\OneDrive\\Dokumenty\\GitHub\\CarLend\\wypożyczalnia_samochodów\\obj\\",
+        "projectPath": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\CarRent.csproj",
+        "packagesPath": "C:\\Users\\pavel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pavel\\Documents\\GitHub\\CarLend\\wypożyczalnia_samochodów\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\shaza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,10 +44,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[12.0.0, )"
-            },
             "MailKit": {
               "target": "Package",
               "version": "[3.4.2, )"

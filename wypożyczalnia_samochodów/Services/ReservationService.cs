@@ -8,7 +8,6 @@ using CarRent.Entites;
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using AutoMapper;
 using CarRent.DbContexts;
 using CarRent.Requests;
 using System.Threading.Tasks;
@@ -19,55 +18,53 @@ namespace CarRent.Services
     public interface IReservationService
     {
         Task<string> Reservation(ReservationParams reservationParams);
-        bool CarReturn(int carId);
+        Task<bool> CarReturn(int carId);
     }
 
     public class ReservationService : IReservationService
     {
         private readonly IConfiguration _configuration;
         private readonly CarRentDbContext _dbContext;
-        private readonly IMapper _mapper;
-        public ReservationService(IConfiguration configuration, CarRentDbContext dbContext, IMapper mapper)
+        public ReservationService(IConfiguration configuration, CarRentDbContext dbContext)
         {
             _dbContext = dbContext;
             _configuration = configuration;
-            _mapper = mapper;
         }
-        public async Task<Customer> MapCustomer(ReservationParams reservationParams)
+        public Customer MapCustomer(ReservationParams reservationParams)
         {
             var customer = new Customer();
             if (reservationParams != null)
             {
-                customer.Name = reservationParams.name;
-                customer.LastName = reservationParams.lastName;
-                customer.Email = reservationParams.email;
-                customer.Phone = reservationParams.phone;
-                customer.Address = reservationParams.address;
-                customer.PostalCode = reservationParams.postalCode;
+                customer.Name = reservationParams.Name;
+                customer.LastName = reservationParams.LastName;
+                customer.Email = reservationParams.Email;
+                customer.Phone = reservationParams.Phone;
+                customer.Address = reservationParams.Address;
+                customer.PostalCode = reservationParams.PostalCode;
             }
             return customer;
         }
-        public async Task<Rent> MapRent(ReservationParams reservationParams)
+        public Rent MapRent(ReservationParams reservationParams)
         {
             var rent = new Rent();
             if (reservationParams != null)
             {
-                rent.From = reservationParams.from;
-                rent.To = reservationParams.to;
+                rent.From = reservationParams.From;
+                rent.To = reservationParams.To;
             }
             return rent;
         }
         public async Task<string> Reservation(ReservationParams reservationParams)//dodać uniklanych klientów 
         {
             List<Car> cars = new List<Car>();
-            for (int i = 0; i < reservationParams.carsId.Count; i++)
+            for (int i = 0; i < reservationParams.CarsId.Count; i++)
             {
-                cars.Add(_dbContext.Cars.FirstOrDefault(c => c.Id == reservationParams.carsId[i]));
+                cars.Add(_dbContext.Cars.FirstOrDefault(c => c.Id == reservationParams.CarsId[i]));
                 if (!cars[i].IsCar)
-                    return $"nie można wypożyczyć auta o podanym id";
+                    throw new InvalidOperationException();
             }
             var employee = await _dbContext.Employees.OrderBy(e => e.Customers.Count).FirstOrDefaultAsync();
-            var customer = await MapCustomer(reservationParams);
+            var customer = MapCustomer(reservationParams);
 
             customer.EmployeeId = employee.Id;
             await _dbContext.Customers.AddAsync(customer);
@@ -77,7 +74,7 @@ namespace CarRent.Services
             {
 
                 cars[i].IsCar = false;
-                rents.Add(await MapRent(reservationParams));
+                rents.Add(MapRent(reservationParams));
                 await _dbContext.Rents.AddAsync(rents[i]);
                 rents[i].CarId = cars[i].Id;
                 rents[i].CustomerId = customer.Id;
@@ -86,18 +83,18 @@ namespace CarRent.Services
 
             await _dbContext.SaveChangesAsync();
             await Send(reservationParams, _configuration.GetSection("EmailUserName").Value);
-            await Send(reservationParams, reservationParams.email);
+            await Send(reservationParams, reservationParams.Email);
             return "Zarezerwowano";
         }
-        public bool CarReturn(int carId)
+        public async Task<bool> CarReturn(int carId)
         {
-            var carReturn = _dbContext.Rents.FirstOrDefault(r => r.CarId == carId);
+            var carReturn =await _dbContext.Rents.FirstOrDefaultAsync(r => r.CarId == carId);
             if (carReturn is null) { return false; }
             _dbContext.Rents.Remove(carReturn);
-            _dbContext.SaveChanges();
-            var isCar = _dbContext.Cars.FirstOrDefault(c => c.Id == carId);
+            await _dbContext.SaveChangesAsync();
+            var isCar = await _dbContext.Cars.FirstOrDefaultAsync(c => c.Id == carId);
             isCar.IsCar = true;
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             return true;
         }
 
@@ -109,7 +106,7 @@ namespace CarRent.Services
             email.To.Add(MailboxAddress.Parse(emailTo));
             if (email.From == email.To)
             {
-                email.Subject = $"Rezerwacja od {reservationParams.email}";
+                email.Subject = $"Rezerwacja od {reservationParams.Email}";
                 email.Body = new TextPart(TextFormat.Html) { Text = $"{result}" };
             }
             else

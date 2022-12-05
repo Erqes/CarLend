@@ -2,18 +2,18 @@
 {
     public class CarParams
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Class { get; set; }
-        public string color { get; set; }
-        public string name { get; set; }
-        public float horsePowerFrom { get; set; }
-        public float horsePowerTo { get; set; }
-        public float priceFrom { get; set; }
-        public float priceTo { get; set; }
-        public float combustionFrom { get; set; }
-        public float combustionTo { get; set; }
-        public string localization { get; set; }
-        public string priceSort { get; set; }
+        public string Color { get; set; }
+        public string Name { get; set; }
+        public float HorsePowerFrom { get; set; }
+        public float HorsePowerTo { get; set; }
+        public float PriceFrom { get; set; }
+        public float PriceTo { get; set; }
+        public float CombustionFrom { get; set; }
+        public float CombustionTo { get; set; }
+        public string Localization { get; set; }
+        public string PriceSort { get; set; }
 
     }
 }

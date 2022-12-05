@@ -1,3 +1,9 @@
+C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.csproj.AssemblyReference.cache
+C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.AssemblyInfoInputs.cache
+C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.AssemblyInfo.cs
+C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.csproj.CoreCompileInputs.cache
+C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\appsettings.json
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\CarRent.exe
@@ -5,8 +11,6 @@ C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\CarRent.runtimeconfig.json
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\CarRent.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\CarRent.pdb
-C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\AutoMapper.dll
-C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\Azure.Core.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\Azure.Identity.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\Humanizer.dll
@@ -45,6 +49,7 @@ C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\System.Linq.Async.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\System.Memory.Data.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\System.Runtime.Caching.dll
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
@@ -85,9 +90,3 @@ C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.pdb
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.genruntimeconfig.cache
 C:\Users\pavel\Documents\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\ref\CarRent.dll
-C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.csproj.AssemblyReference.cache
-C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.AssemblyInfoInputs.cache
-C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.AssemblyInfo.cs
-C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.csproj.CoreCompileInputs.cache
-C:\Users\shaza\OneDrive\Dokumenty\GitHub\CarLend\wypożyczalnia_samochodów\obj\Debug\net6.0\CarRent.MvcApplicationPartsAssemblyInfo.cache

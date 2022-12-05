@@ -27,38 +27,16 @@ namespace CarRent.Controllers
         {
             _carRentService = carRentService;
         }
-
-        //[HttpGet]
-        //public ActionResult<IEnumerable<Car>> GetAll()
-        //{
-        //    var Cars = _dbContext.Cars.ToList();
-        //    var carsDtos = Cars.Select(c => new Car()
-        //    {
-        //        Class = c.Class,
-        //        Combustion = c.Combustion,
-        //    });
-        //    return Ok(Cars);
-        //}
-
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
-        //[HttpPost("przywitaj")]
-        //public string Hello([FromBody] string Name)
-        //{
-        //    return $"Hello {Name}";
-        //}
         [HttpPost("count")]
         public async Task<string> Count([FromBody] LendParams lendParams)
         {
-            var count =await Task.Run(()=> _carRentService.CountBy(lendParams));
+            var count =await _carRentService.CountBy(lendParams);
             return count;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<CarRentDto>> GetAll()
+        public async Task<ActionResult<IEnumerable<CarDto>>> GetAll()
         {
-            var cars = _carRentService.GetAll();
+            var cars = await _carRentService.GetAll();
             if (cars == null)
                 return NotFound();
             return Ok(cars);

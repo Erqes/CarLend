@@ -8,10 +8,10 @@ namespace CarRent.Requests
 {
     public class LendParams
     {
-        public CarType carClass { get; set; }
-        public float km { get; set; }
-        public DateTime from { get; set; }
-        public DateTime to { get; set; }
-        public DateTime driveLicense { get; set; }
+        public CarType CarClass { get; set; }
+        public float Km { get; set; }
+        public DateTime From { get; set; }
+        public DateTime To { get; set; }
+        public DateTime DriveLicense { get; set; }
     }
 }
