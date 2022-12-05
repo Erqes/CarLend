@@ -41,15 +41,15 @@ namespace CarRent.Controllers
                 return NotFound();
             return Ok(cars);
         }
-        [HttpGet("byparams")]
-        public ActionResult<IEnumerable<CarRentDto>> GetByParams([FromBody] CarParams carParams)
-        {
-            // filtruj po:
-            // do wyboru kolor, spalanie od-do, cena od-do, moc od-do, nazwa
-            //sortuj po cenie od nw, od nm
-            var cars=_carRentService.GetByParams(carParams);
-            return Ok(cars);
-        }
+        //[HttpGet("byparams")]
+        //public ActionResult<IEnumerable<CarRentDto>> GetByParams([FromBody] CarParams carParams)
+        //{
+        //    // filtruj po:
+        //    // do wyboru kolor, spalanie od-do, cena od-do, moc od-do, nazwa
+        //    //sortuj po cenie od nw, od nm
+        //    var cars=_carRentService.GetByParams(carParams);
+        //    return Ok(cars);
+        //}
         
     }
 }

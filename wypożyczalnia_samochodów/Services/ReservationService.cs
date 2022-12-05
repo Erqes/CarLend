@@ -56,11 +56,11 @@ namespace CarRent.Services
         }
         public async Task<string> Reservation(ReservationParams reservationParams)//dodać uniklanych klientów 
         {
-            List<Car> cars = new List<Car>();
+            List<Car> carsToReserve = new List<Car>();
             for (int i = 0; i < reservationParams.CarsId.Count; i++)
             {
-                cars.Add(_dbContext.Cars.FirstOrDefault(c => c.Id == reservationParams.CarsId[i]));
-                if (!cars[i].IsCar)
+                carsToReserve.Add(_dbContext.Cars.FirstOrDefault(c => c.Id == reservationParams.CarsId[i]));
+                if (!carsToReserve[i].IsCar)
                     throw new InvalidOperationException();
             }
             var employee = await _dbContext.Employees.OrderBy(e => e.Customers.Count).FirstOrDefaultAsync();
@@ -69,15 +69,15 @@ namespace CarRent.Services
             customer.EmployeeId = employee.Id;
             await _dbContext.Customers.AddAsync(customer);
             await _dbContext.SaveChangesAsync();
-            List<Rent> rents = new List<Rent>();
-            for (int i = 0; i < cars.Count; i++)
+            List<Rent> NewRents = new List<Rent>();
+            for (int i = 0; i < carsToReserve.Count; i++)
             {
 
-                cars[i].IsCar = false;
-                rents.Add(MapRent(reservationParams));
-                await _dbContext.Rents.AddAsync(rents[i]);
-                rents[i].CarId = cars[i].Id;
-                rents[i].CustomerId = customer.Id;
+                carsToReserve[i].IsCar = false;
+                NewRents.Add(MapRent(reservationParams));
+                await _dbContext.Rents.AddAsync(NewRents[i]);
+                NewRents[i].CarId = carsToReserve[i].Id;
+                NewRents[i].CustomerId = customer.Id;
 
             }
 
@@ -88,26 +88,26 @@ namespace CarRent.Services
         }
         public async Task<bool> CarReturn(int carId)
         {
-            var carReturn =await _dbContext.Rents.FirstOrDefaultAsync(r => r.CarId == carId);
-            if (carReturn is null) { return false; }
-            _dbContext.Rents.Remove(carReturn);
+            var carToReturn =await _dbContext.Rents.FirstOrDefaultAsync(r => r.CarId == carId);
+            if (carToReturn is null) { return false; }
+            _dbContext.Rents.Remove(carToReturn);
             await _dbContext.SaveChangesAsync();
-            var isCar = await _dbContext.Cars.FirstOrDefaultAsync(c => c.Id == carId);
-            isCar.IsCar = true;
+            var changeCarStatus = await _dbContext.Cars.FirstOrDefaultAsync(c => c.Id == carId);
+            changeCarStatus.IsCar = true;
             await _dbContext.SaveChangesAsync();
             return true;
         }
 
         public async Task Send(ReservationParams reservationParams, string emailTo)
         {
-            var result = reservationParams.ToString();
+            var ReservationParamsInfo = reservationParams.ToString();
             var email = new MimeMessage();
             email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailUserName").Value));
             email.To.Add(MailboxAddress.Parse(emailTo));
             if (email.From == email.To)
             {
                 email.Subject = $"Rezerwacja od {reservationParams.Email}";
-                email.Body = new TextPart(TextFormat.Html) { Text = $"{result}" };
+                email.Body = new TextPart(TextFormat.Html) { Text = $"{ReservationParamsInfo}" };
             }
             else
             {

@@ -19,7 +19,7 @@ namespace CarRent.Services
     {
         Task<string> CountBy(LendParams lendParams);
         Task<IEnumerable<CarDto>> GetAll();
-        IEnumerable<CarDto> GetByParams(CarParams carParams);
+        //IEnumerable<CarDto> GetByParams(CarParams carParams);
     }
 
     public class CarRentService : ICarRentService
@@ -44,12 +44,11 @@ namespace CarRent.Services
             var fuelPrice = 8;
             var lendPrice = 100;
             var car =await GetType(lendParams.CarClass);
-            if (car is null) return null;
-            var CarsCount =await GetCount();
-            var howLong = DateTime.Now - lendParams.DriveLicense;
-            var floatHowLong = (float)howLong.TotalDays;
-            var days = lendParams.To - lendParams.From;
-            var howManyDays = days.TotalDays;
+            var CarsCountInRental =await GetCount();
+            var HowLongDriveLincense = DateTime.Now - lendParams.DriveLicense;
+            var floatHowLongDriveLicense = (float)HowLongDriveLincense.TotalDays;
+            var RentTimeSpan = lendParams.To - lendParams.From;
+            var howManyDays = RentTimeSpan.TotalDays;
             var floatDays = (float)howManyDays;//ilosc dni w int 
             var result = car.Combustion * lendParams.Km / 100 * fuelPrice + lendPrice * floatDays;
 
@@ -63,17 +62,17 @@ namespace CarRent.Services
             };
             float resultYears, resultCount;
             //jeśli prawo jazdy mniej niż 5 lat 
-            if (5 * 365 > floatHowLong)
+            if (5 * 365 > floatHowLongDriveLicense)
                 resultYears = result + result * 0.2f;
             else
                 resultYears = 0;
             //jesli aut jest mniej niż 3 
-            if (CarsCount < 3)
+            if (CarsCountInRental < 3)
                 resultCount = result + result * 0.15f;
             else
                 resultCount = 0;
             //jeśli prawo jazdy mniej niż 3 lata i klasa Premium
-            if (3 * 365 > floatHowLong && lendParams.CarClass.ToString() == "Premium")
+            if (3 * 365 > floatHowLongDriveLicense && lendParams.CarClass.ToString() == "Premium")
                 return "Nie można wypożyczyć samochodu";
 
             result = result + resultCount + resultYears;
@@ -102,34 +101,34 @@ namespace CarRent.Services
             return carsDtos;
         }
        
-        public IEnumerable<CarDto> GetByParams(CarParams carParams)
-        {
-            var cars = _dbContext.Cars.Where(c => c.Name == carParams.Name)
-                .Where(c => c.Color == carParams.Color)
-                .Where(c => c.Price <= carParams.PriceTo)
-                .Where(c => c.Price >= carParams.PriceFrom)
-                .Where(c => c.Combustion <= carParams.CombustionTo)
-                .Where(c => c.Combustion >= carParams.CombustionFrom)
-                .Where(c => c.HorsePower <= carParams.HorsePowerTo)
-                .Where(c => c.HorsePower >= carParams.HorsePowerTo).ToList();
+        //public IEnumerable<CarDto> GetByParams(CarParams carParams)
+        //{
+        //    var cars = _dbContext.Cars.Where(c => c.Name == carParams.Name)
+        //        .Where(c => c.Color == carParams.Color)
+        //        .Where(c => c.Price <= carParams.PriceTo)
+        //        .Where(c => c.Price >= carParams.PriceFrom)
+        //        .Where(c => c.Combustion <= carParams.CombustionTo)
+        //        .Where(c => c.Combustion >= carParams.CombustionFrom)
+        //        .Where(c => c.HorsePower <= carParams.HorsePowerTo)
+        //        .Where(c => c.HorsePower >= carParams.HorsePowerTo).ToList();
 
-            var carsDto = cars.Select(c => new CarDto()
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Color = c.Color,
-                Price = c.Price,
-                Combustion = c.Combustion,
-                Localization = c.Localization,
-                Class = c.Class,
-                HorsePower = c.HorsePower,
-            }).ToList();
+        //    var carsDto = cars.Select(c => new CarDto()
+        //    {
+        //        Id = c.Id,
+        //        Name = c.Name,
+        //        Color = c.Color,
+        //        Price = c.Price,
+        //        Combustion = c.Combustion,
+        //        Localization = c.Localization,
+        //        Class = c.Class,
+        //        HorsePower = c.HorsePower,
+        //    }).ToList();
 
-            if (carParams.PriceSort == "descending")
-                carsDto.Sort();
-            else
-                carsDto.Reverse();
-            return carsDto;
-        }
+        //    if (carParams.PriceSort == "descending")
+        //        carsDto.Sort();
+        //    else
+        //        carsDto.Reverse();
+        //    return carsDto;
+        //}
     }
 }
